@@ -17,6 +17,8 @@ import com.example.sameershekhar.watherapp.view.HomeScreen;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.time.DayOfWeek;
+import java.util.Date;
 import java.util.List;
 
 public class HomeScreenAdapter extends RecyclerView.Adapter<HomeScreenAdapter.MyViewHolder> {
@@ -46,12 +48,19 @@ public class HomeScreenAdapter extends RecyclerView.Adapter<HomeScreenAdapter.My
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, final int position) {
          myViewHolder.cityName.setText(weatherResponseList.get(position).getName());
-         myViewHolder.cityTemp.setText(weatherResponseList.get(position).getMain().getTemp().toString());
+         myViewHolder.cityTemp.setText(weatherResponseList.get(position).getMain().getTemp().toString()+(char) 0x00B0+" c");
          myViewHolder.lastUpdatedDate.setText(getFormatedTime(weatherResponseList.get(position).getDt()));
          myViewHolder.view.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
                  homeScreenCityClickListner.onSavedCityClick(weatherResponseList.get(position).getName());
+             }
+         });
+         myViewHolder.view.setOnLongClickListener(new View.OnLongClickListener() {
+             @Override
+             public boolean onLongClick(View view) {
+                 homeScreenCityClickListner.onSavedCityDelete(weatherResponseList.get(position).getName());
+                 return true;
              }
          });
     }
@@ -75,10 +84,39 @@ public class HomeScreenAdapter extends RecyclerView.Adapter<HomeScreenAdapter.My
     }
 
     private String getFormatedTime(long time){
+        String[] strDays = new String[] { "Sunday", "Monday", "Tuesday","Wednesday", "Thursday","Friday", "Saturday" };
+        String dateformate="";
         if(time!=0){
             Timestamp ts=new Timestamp(time);
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            return formatter.format(ts);
+            Date date=new Date(time*1000);
+            int hours=date.getHours();
+            int minutes=date.getMinutes();
+            int seconds=date.getSeconds();
+            int day=date.getDay();
+//            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//            return formatter.format(ts);
+            dateformate+=strDays[day]+", ";
+
+            if(hours<10){
+                dateformate+="0"+hours+": ";
+            }else {
+                dateformate+=hours+": ";
+            }
+
+            if(minutes<10){
+                dateformate+="0"+minutes;
+            }else {
+                dateformate+=minutes;
+            }
+
+            if(hours<12)
+            {
+                dateformate+=" AM";
+            }else {
+                dateformate+=" PM";
+            }
+            return  dateformate;
+
         }else {
             return "";
         }

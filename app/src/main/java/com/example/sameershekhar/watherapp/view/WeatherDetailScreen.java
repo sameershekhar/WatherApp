@@ -17,6 +17,7 @@ import com.example.sameershekhar.watherapp.viewmodel.WeatherDetailScreenViewMode
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -52,24 +53,19 @@ public class WeatherDetailScreen extends AppCompatActivity {
 
 
         if(getIntent()!=null){
-          //  Toast.makeText(this,getIntent().getStringExtra(Constant.USER_SELECTED_CITY_NAME),Toast.LENGTH_LONG).show();
-            //Log.v("test9",getIntent().getStringExtra(Constant.USER_SELECTED_CITY_NAME));
             weatherDetailScreenViewModel.setCityName(getIntent().getStringExtra(Constant.USER_SELECTED_CITY_NAME));
             weatherDetailScreenViewModel.getCityWeatherInfoByCityName().observe(this, new Observer<WeatherResponse>() {
                 @Override
                 public void onChanged(WeatherResponse weatherResponse) {
-
-                    Log.v("test10",weatherResponse.getName());
-                    maxTemp.setText(weatherResponse.getMain().getTempMax().toString());
-                    minTemp.setText(weatherResponse.getMain().getTempMin().toString());
-                    pressure.setText(weatherResponse.getMain().getPressure().toString());
-                    humidity.setText(weatherResponse.getMain().getHumidity().toString());
-                    windSpeed.setText(weatherResponse.getWind().getSpeed().toString());
+                    maxTemp.setText(weatherResponse.getMain().getTempMax().toString()+(char) 0x00B0+" c");
+                    minTemp.setText(weatherResponse.getMain().getTempMin().toString()+(char) 0x00B0+" c");
+                    pressure.setText(weatherResponse.getMain().getPressure().toString()+" hPa");
+                    humidity.setText(weatherResponse.getMain().getHumidity().toString()+" %");
+                    windSpeed.setText(weatherResponse.getWind().getSpeed().toString()+" m/s");
                     lastUpdated.setText(getFormatedTime(weatherResponse.getDt()));
                 }
             });
         }else {
-           // Toast.makeText(this,"nothing",Toast.LENGTH_LONG).show();
             Log.v("test8","nothing");
 
         }
@@ -78,10 +74,35 @@ public class WeatherDetailScreen extends AppCompatActivity {
 
 
     private String getFormatedTime(long time){
+        String[] strDays = new String[] { "Sunday", "Monday", "Tuesday","Wednesday", "Thursday","Friday", "Saturday" };
+        String dateformate="";
         if(time!=0){
             Timestamp ts=new Timestamp(time);
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            return formatter.format(ts);
+            Date date=new Date(time*1000);
+            int hours=date.getHours();
+            int minutes=date.getMinutes();
+            int day=date.getDay();
+            dateformate+=strDays[day]+", ";
+            if(hours<10){
+                dateformate+="0"+hours+": ";
+            }else {
+                dateformate+=hours+": ";
+            }
+
+            if(minutes<10){
+                dateformate+="0"+minutes;
+            }else {
+                dateformate+=minutes;
+            }
+
+            if(hours<12)
+            {
+                dateformate+=" AM";
+            }else {
+                dateformate+=" PM";
+            }
+            return  dateformate;
+
         }else {
             return "";
         }

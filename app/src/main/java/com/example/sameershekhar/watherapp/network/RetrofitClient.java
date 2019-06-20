@@ -10,7 +10,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitClient {
     private static RetrofitClient instance = null;
     private Retrofit retrofit;
-    private OkHttpClient client;
 
     private WheatherServiceApi wheatherServiceApi;
 

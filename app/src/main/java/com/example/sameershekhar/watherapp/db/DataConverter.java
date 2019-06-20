@@ -13,29 +13,6 @@ import java.util.List;
 
 public class DataConverter {
 
-//    @TypeConverter //
-//    public static String fromWeatherList(ArrayList<Weather> weatherList) {
-//        if (weatherList == null) {
-//            return (null);
-//        }
-//        Gson gson = new Gson();
-//        Type type = new TypeToken<ArrayList<Weather>>() {
-//        }.getType();
-//        String json = gson.toJson(weatherList, type);
-//        return json;
-//    }
-//
-//    @TypeConverter //
-//    public static ArrayList<Weather> toWeatherList(String weatherString) {
-//        if (weatherString == null) {
-//            return (null);
-//        }
-//        Gson gson = new Gson();
-//        Type type = new TypeToken<ArrayList<Weather>>() {
-//        }.getType();
-//        return gson.fromJson(weatherString, type);
-//    }
-
     @TypeConverter
     public static List<Weather> fromString(String value) {
         Type listType = new TypeToken<List<Weather>>() {}.getType();

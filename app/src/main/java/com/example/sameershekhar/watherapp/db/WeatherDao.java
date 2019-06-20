@@ -24,4 +24,13 @@ public interface WeatherDao {
     @Query("SELECT * FROM WeatherResponse ORDER BY id DESC")
     LiveData<List<WeatherResponse>> getAllCitiesWeatherResponseFromLocalDb();
 
+    @Query("SELECT name FROM WeatherResponse ORDER BY id DESC")
+    String[] getAllCitiesNamesWeatherResponseFromLocalDb();
+
+
+
+    @Query("DELETE FROM WeatherResponse WHERE name = :cityName")
+    void deleteCityWeatherInfoByCityName(String cityName);
+
+
 }
