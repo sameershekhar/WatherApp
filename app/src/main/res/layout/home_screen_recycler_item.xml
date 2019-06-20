@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:id="@+id/line1"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:id="@+id/cityName"
+            android:layout_marginLeft="@dimen/margin16"
+            android:layout_marginTop="@dimen/margin16"
+            android:textSize="@dimen/size24"
+            android:layout_height="wrap_content"
+            android:text="Bangalore"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/cityTemp"
+            android:layout_marginRight="@dimen/margin16"
+            android:layout_marginTop="@dimen/margin16"
+            android:textSize="@dimen/size18"
+            android:text="9 c"/>
+
+
+    </LinearLayout>
+
+    <TextView
+
+        android:id="@+id/latsUpdateDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line1"
+        android:layout_marginLeft="@dimen/margin16"
+        android:layout_marginBottom="@dimen/margin16"
+        android:text="Tue, 12: 00 PM."
+        android:textSize="@dimen/size14" />
+
+
+</RelativeLayout>

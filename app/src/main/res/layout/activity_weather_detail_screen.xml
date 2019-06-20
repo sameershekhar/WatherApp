@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".view.WeatherDetailScreen">
+
+    <LinearLayout
+        android:id="@+id/layout1"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_margin="@dimen/margin16"
+        android:layout_marginTop="@dimen/margin10"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Min Temp : "
+            android:textSize="@dimen/size18"
+            android:id="@+id/min_temp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10 c"
+            android:textSize="@dimen/size18"
+            android:id="@+id/min_temp_value"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout2"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/margin10"
+        android:layout_margin="@dimen/margin16"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Max Temp : "
+            android:textSize="@dimen/size18"
+            android:id="@+id/max_temp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10 c"
+            android:textSize="@dimen/size18"
+            android:id="@+id/max_temp_value"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/margin10"
+        android:layout_margin="@dimen/margin16"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Humidity : "
+            android:textSize="@dimen/size18"
+            android:id="@+id/humidity"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="45 c"
+            android:textSize="@dimen/size18"
+            android:id="@+id/humidity_value"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/margin10"
+        android:layout_margin="@dimen/margin16"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Wind Speed : "
+            android:textSize="@dimen/size18"
+            android:id="@+id/wind_speed"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="45 c"
+            android:textSize="@dimen/size18"
+            android:id="@+id/wind_speed_value"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/margin10"
+        android:layout_margin="@dimen/margin16"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="pressure : "
+            android:textSize="@dimen/size18"
+            android:id="@+id/pressure"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="100 pas"
+            android:textSize="@dimen/size18"
+            android:id="@+id/pressure_value"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/margin10"
+        android:layout_margin="@dimen/margin16"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="last updated : "
+            android:textSize="@dimen/size18"
+            android:id="@+id/last_updated"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" Tue, 12: 00 PM"
+            android:textSize="@dimen/size18"
+            android:id="@+id/last_updated_value"
+            />
+
+    </LinearLayout>
+
+
+</LinearLayout>
